@@ -1,12 +1,15 @@
 package br.com.bitelowear.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Fornecedor {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer codigo;
 
 	private String cpf;
@@ -20,6 +23,9 @@ public class Fornecedor {
 	private String bairro;
 	private String tpFornecedor;
 	private boolean ativo;
+	private String telefone;
+	private String mobile;
+	private String email;
 
 	public Integer getCodigo() {
 		return codigo;
@@ -115,6 +121,30 @@ public class Fornecedor {
 
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 }

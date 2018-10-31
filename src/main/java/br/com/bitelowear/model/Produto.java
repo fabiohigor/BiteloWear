@@ -3,8 +3,12 @@ package br.com.bitelowear.model;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -12,6 +16,7 @@ import javax.persistence.OneToOne;
 public class Produto {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer codigo;
 	private String descricao;
 	private Double valor;
@@ -21,10 +26,11 @@ public class Produto {
 	@OneToOne
 	private Modelo modelo;
 
-	
-	@OneToMany(fetch= FetchType.LAZY)
+	@OneToOne
+	private Categoria categoria;
+
+	@OneToMany
 	private List<Foto> fotos;
-	
 
 	public Integer getCodigo() {
 		return codigo;
@@ -66,8 +72,6 @@ public class Produto {
 		this.sku = sku;
 	}
 
-	
-
 	public Modelo getModelo() {
 		return modelo;
 	}
@@ -82,6 +86,14 @@ public class Produto {
 
 	public void setFotos(List<Foto> fotos) {
 		this.fotos = fotos;
+	}
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
 	}
 
 }
